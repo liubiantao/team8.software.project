@@ -6,15 +6,31 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" import="courses.Course"%>
 <%  // if returning to this page after entering errors, get errors
-    int errorCount;
+    // and previous values entered
     String[] errors;
+    int errorCount = 0;
+    String course_code = "";
+    String title = "";
+    String s_date = "";
+    String f_date = "";
+    String max_places = "";
+    String total_fee = "";
+    String deposit = "";
+    String description = "";
     try{
         Course course = (Course) request.getAttribute("course");
         errors = course.getErrors(); 
         errorCount  = course.getErrorCount();
+        course_code = course.getCourse_code();
+        title = course.getTitle();
+        s_date = course.getS_date();
+        f_date = course.getF_date();
+        max_places = course.getMax_places();
+        total_fee = course.getTotal_fee();
+        deposit = course.getDeposit();
+        description = course.getDescription();
     }
-    catch(NullPointerException e){
-        errorCount = 0;
+    catch(NullPointerException e){ 
         errors = new String[0];
     }
 %>
@@ -40,23 +56,23 @@
                 <h1>Add a course</h1>
                 <form action ="validateAddCourse" method="POST" autocomplete="on">
                 Course code:<br>
-                <input type="text" name="course_code" maxlength="6"><br>
+                <input type="text" name="course_code" maxlength="6" value="<%=course_code%>"><br>
                 Course title:<br>
-                <input type="text" name="title" maxlength="100"><br>
+                <input type="text" name="title" maxlength="100" value ="<%=title%>"><br>
                 Start date:<br>
-                <input type="text" name="s_date" maxlength="10" 
+                <input type="text" name="s_date" maxlength="10" value ="<%=s_date%>"
                        placeholder="YYYY-MM-DD"><br>
                 Finish date:<br> 
-                <input type="text" name="f_date" maxlength="10"
+                <input type="text" name="f_date" maxlength="10" value ="<%=f_date%>"
                        placeholder="YYYY-MM-DD"><br>
                 Max places:<br>
-                <input type="text" name="max_places"><br>
+                <input type="text" name="max_places" <%=max_places%>><br>
                 Total fee (euros):<br>
-                <input type="text" name="total_fee"><br>
+                <input type="text" name="total_fee" <%=total_fee%>><br>
                 Deposit (euros):<br>
-                <input type="text" name="deposit"><br>
+                <input type="text" name="deposit" <%=deposit%>><br>
                 Description:<br>
-                <textarea name="description" maxlength="10000"></textarea><br>
+                <textarea name="description" maxlength="10000"><%=description%></textarea><br>
                 <input type="submit" value="Add Course">
             </form>
         </div>

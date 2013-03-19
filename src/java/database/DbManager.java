@@ -14,9 +14,9 @@ public class DbManager {
      * Connects to the MySQl database using the URL, username and password.
      */
     public void connect() {
-        String URL = "jdbc:mysql://localhost:3306/scdb?zeroDateTimeBehavior=convertToNull";
-        String username = "root";
-        String password = "1l2mmatt";
+        String URL = "";
+        String username = "";
+        String password = "";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");

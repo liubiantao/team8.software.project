@@ -37,17 +37,17 @@ public class AddCourseServlet extends HttpServlet {
             course.setTotal_fee(request.getParameter("total_fee"));
             course.setDeposit(request.getParameter("deposit")); 
             course.setDescription(request.getParameter("description")); 
-            request.setAttribute("course", course);
             String nextJSP;
             // check if course data is valid   
             if(course.isValid()) {
                 // add course to the database
                 course.addCourse();
                 nextJSP = "courseadded.jsp";
-
+                
             }
             else {
                 // bring user back to add course page
+                request.setAttribute("course", course);
                 nextJSP = "addcourse.jsp";
             }
             

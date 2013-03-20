@@ -143,17 +143,17 @@ public class Course {
         try {
             splits = string.split(delim);
             
-            if(splits.length != 3 || splits[0].length()!= 4 
-                                  || splits[1].length()!= 2
-                                  || splits[2].length()!= 2) {
-                result = false;
-            }
-            else {
-                for(String i: splits) {
+            if(splits.length == 3 && splits[0].length() == 4 
+                                 && splits[1].length() == 2
+                                 && splits[2].length() == 2) {
+                    for(String i: splits) {
                     if(!isInt(i)){
                         result = false;
                     }
                 }
+            }
+            else {
+                result = false;
             }
         }
         catch(PatternSyntaxException e) {
@@ -276,7 +276,7 @@ public class Course {
                                     + s_date + "', '" 
                                     + f_date + "', " 
                                     + max_places + ", " 
-                                    + max_places + ", " 
+                                    + max_places + ", " // avail_places should be same as max_places when first inserted
                                     + total_fee + ", " 
                                     + deposit + ", '" 
                                     + description + "')"); 
